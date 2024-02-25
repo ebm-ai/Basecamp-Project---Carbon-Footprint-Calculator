@@ -5,3 +5,7 @@ Eco Impact Africa (EIA) is a startup organization with a strong commitment to en
 
 - [@Doyma901](https://www.github.com/Doyma901)
 - [@filimonkd](https://www.github.com/filimonkd)
+- [@awol-90](https://github.com/awol-90)
+- [@shewitgebreyesus](https://github.com/shewitgebreyesus)
+- [@ebm-ai](https://github.com/ebm-ai)
+- 
