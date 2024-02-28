@@ -6,11 +6,11 @@
         <p>Ecoimpact Africa is a social enterprise on a mission to unlock Africa's potential. 
             We envision a thriving continent where resilient ecosystems and empowered agribusinesses 
             fuel economic prosperity, environmental health, and climate resilience.</p>
-        <p>
-        <li>Nature Finance: Unlocking the value of natural capital to drive both environmental and economic benefits.</li>
-        <li>Agribusiness: Building thriving, sustainable agribusinesses that create jobs, improve livelihoods, and protect the planet.</li>
-        <li>Sustainable Supply Chains: Transforming traditional chains into models that prioritize both profit and positive impact.</li
-        </p>
+        <ul>
+            <li>Nature Finance: Unlocking the value of natural capital to drive both environmental and economic benefits.</li>
+            <li>Agribusiness: Building thriving, sustainable agribusinesses that create jobs, improve livelihoods, and protect the planet.</li>
+            <li>Sustainable Supply Chains: Transforming traditional chains into models that prioritize both profit and positive impact.</li>
+        </ul>
         <p>Our team is your secret weapon: We boast a team of passionate experts with deep experience in regenerative agriculture, 
             agroforestry, nature-based solutions, sustainable supply chain management, and more. We navigate government intricacies 
             and shape policies that empower sustainable growth.</p>
