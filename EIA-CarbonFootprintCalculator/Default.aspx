@@ -1,58 +1,53 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="EIA_CarbonFootprintCalculator._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <main style="margin-left: auto; margin-right: auto; text-align: center;">
-        <section class="row" aria-labelledby="aspnetTitle">
-            <div>
-                 <h1 id="aspnetTitle">Welcome to Eco Impact Africa's Carbon Footprint Calculator!</h1>
-                    <p class="lead">We are delighted to welcome you to our user-friendly and intuitive Carbon Footprint Calculator.</p>
-            </div>
-            <%-- <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p> --%>
-        </section>
-
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Who Are We</h2>
-                <p>
-                    Lawyers, natural scientists, environmental assessment practitioners, auditors, 
-                    environmental control officers and data base administrators.
-                </p>
-                <p>
-                   <%-- <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a> --%>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Services</h2>
-                <p>
-                     <li>Environmental, Health and Safety, Energy and Food Safety Legislation Registers</li>
-                     <li>Environmental, Health and Safety, Energy Management Systems</li>
-                     <li>Environmental, Health and Safety Compliance Auditing</li>
-                     <li>Sustainability Auditing</li>
-                     <li>Environmental Impact Assessments</li>
-                     <li>Environmental Control Officers</li>
-                     <li>On-Site Environmental, Health and Safety Management</li>
-                     <li>Training Workshops Incorporating Our Services</li>
-                </p>
-                <p>
-                    <%-- <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a> --%>
-                </p>
-            </section>            
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">What's Next</h2>
-                <p>
-                    Thank you for choosing Eco Impact Africa's Carbon Footprint Calculator to embark on your sustainability journey. 
-                    Together, let's make a positive impact and create a more sustainable, low-carbon future for generations to come.
-                </p>
-                <p>
-                   <%-- <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a> --%>
-                </p>
-            </section>
-
-            <section>
-                <h4 class="foot">Start calculating your carbon footprint now by logging in to our app and be part of the change!</h4>
-            </section>
+    
+    <header class="d-flex flex-column align-items-center py-5 mb-4" style="background-image: url('https://images.unsplash.com/photo-1580234033313-184d6414b800?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
+    <div class="container d-flex justify-content-between align-items-center">
+        <nav class="d-flex align-items-center">
+            <a href="#" class="nav-link px-3 text-white">Home</a>
+            <a href="#" class="nav-link px-3 text-white">About</a>
+            <a href="#" class="nav-link px-3 text-white">Contact</a>
+        </nav>
+        <div class="d-flex align-items-center">
+            <a href="#" class="btn btn-sm btn-outline-light me-2">Login</a>
+            <a href="#" class="btn btn-sm btn-primary">Register</a>
         </div>
+    </div>
+    <div class="text-center mt-4">
+        <h1 class="display-4 text-white">Eco Impact Africa</h1>
+        <p class="lead text-white">Empowering Sustainable Practices, Together</p>
+        <a href="#" class="btn btn-lg btn-primary mt-3">Calculate Your Footprint</a>
+    </div>
+</header>
+    <main class="container">
+        <section class="row">
+            <div class="col-md-6">
+                <h2>Our Mission & Vision</h2>
+                <p>
+                    Eco Impact Africa is dedicated to providing comprehensive environmental solutions and fostering a culture of sustainability. We envision a future where businesses and individuals can thrive in harmony with the environment.
+                </p>
+                <h2>Services</h2>
+                <ul class="list-unstyled">
+                    <li>Environmental Regulations Compliance</li>
+                    <li>Sustainability Auditing & Consulting</li>
+                    <li>Environmental Impact Assessments</li>
+                    <li>On-Site Environmental Management</li>
+                    <li>Training & Workshops</li>
+                </ul>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <img src="https://images.unsplash.com/photo-1451847251646-8a6c0dd1510c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sustainable practices image" class="img-fluid rounded mx-auto">
+            </div>
+        </section>
+        <section class="row text-center mt-4 mb-5">
+            <div class="col-md-12">
+                <h3>Why Choose Us?</h3>
+                <p>
+                    Eco Impact Africa offers a team of experienced professionals, tailored solutions, and a commitment to exceeding client expectations. We are passionate about sustainability and empower our clients to make a positive impact.
+                </p>
+                <a href="#" class="btn btn-primary mt-3">Learn More</a>
+            </div>
+        </section>
     </main>
-
 </asp:Content>
