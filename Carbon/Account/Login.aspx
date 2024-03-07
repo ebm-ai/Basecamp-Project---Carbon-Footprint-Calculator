@@ -29,10 +29,10 @@
      <header class="py-5 mb-4" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
      <div class="container d-flex justify-content-between align-items-center">
          <nav class="d-flex align-items-center">
-             <a href="Default.aspx" class="nav-link px-3">Home</a>
-             <a href="About.aspx" class="nav-link px-3">About</a>
-             <a href="Contact.aspx" class="nav-link px-3">Contact</a>
-             <a href="DataHistory.aspx" class="nav-link px-3">Data History</a>
+             <a href="/Default.aspx" class="nav-link px-3">Home</a>
+             <a href="/About.aspx" class="nav-link px-3">About</a>
+             <a href="/Contact.aspx" class="nav-link px-3">Contact</a>
+             <a href="/DataHistory.aspx" class="nav-link px-3">Data History</a>
          </nav>
          <div class="d-flex align-items-center">
              <%-- Display welcome message if user is authenticated --%>
