@@ -2,6 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
+        td {
+            text-transform: capitalize;
+        }
         .btn-green {
             color: #fff;
             background-color: #006400; /* Darker shade of green */
@@ -59,6 +62,7 @@
                         <th>Fuel Type</th>
                         <th>Fuel Efficiency (Gallons/Km/Mile)</th>
                         <th>Entry Date</th>
+                        <th>Carbon Emissions</th> <!-- New column for carbon emissions -->
                     </tr>
                 </thead>
                 <!-- Table body -->
@@ -78,6 +82,7 @@
                         <th>Energy Source</th>
                         <th>Electricity Usage (Kilowatt-Hours)</th>
                         <th>Entry Date</th>
+                        <th>Carbon Emissions</th> <!-- New column for carbon emissions -->
                     </tr>
                 </thead>
                 <!-- Table body -->
@@ -86,33 +91,52 @@
                 </tbody>
             </table>
         </div>
+        <asp:HiddenField ID="dataHistoryHiddenField" runat="server" />
     </div>
-    <script>
-        // Function to populate data history
-        function populateDataHistory() {
-            // Get JSON data from local storage
-            var dataHistory = JSON.parse(localStorage.getItem('dataHistory'));
 
+    <script>
+        // Call populateDataHistory function when the page loads
+        window.onload = function () {
+            // Retrieve data history from the hidden field
+            var dataHistoryJson = document.getElementById('<%= dataHistoryHiddenField.ClientID %>').value;
+            if (dataHistoryJson) {
+                var dataHistory = JSON.parse(dataHistoryJson);
+                populateDataHistory(dataHistory);
+            } else {
+                console.error("No data history provided.");
+            }
+        };
+
+        // Function to populate data history
+        // Function to populate data history
+        function populateDataHistory(dataHistory) {
             // Access data history tables
             var transportTable = document.getElementById("transportTable").getElementsByTagName('tbody')[0];
             var electricityTable = document.getElementById("electricityTable").getElementsByTagName('tbody')[0];
 
             // Populate transport emissions table
-            dataHistory.transport.forEach(function(data) {
-                var row = transportTable.insertRow();
-                row.innerHTML = "<td>" + data.vehicleType + "</td><td>" + data.distanceTravelled + "</td><td>" + data.fuelType + "</td><td>" + data.fuelEfficiency + "</td><td>" + data.entryDate + "</td>";
-            });
+            dataHistory.forEach(function (entry) {
+                var transportEntry = entry.transport;
+                var electricityEntry = entry.electricity;
 
-            // Populate electricity consumption table
-            dataHistory.electricity.forEach(function(data) {
-                var row = electricityTable.insertRow();
-                row.innerHTML = "<td>" + data.energySource + "</td><td>" + data.electricityUsage + "</td><td>" + data.entryDate + "</td>";
+                if (transportEntry) {
+                    var transportRow = transportTable.insertRow();
+                    transportRow.innerHTML = "<td>" + (transportEntry.vehicleType || '') + "</td><td>" + (transportEntry.distanceTravelled || '') + "</td><td>" + (transportEntry.fuelType || '') + "</td><td>" + (transportEntry.fuelEfficiency || '') + "</td><td>" + formatDateString(entry.entryDate) + "</td><td>" + (entry.carbonEmissions || '') + "</td>"; // Include carbon emissions
+                }
+
+                if (electricityEntry) {
+                    var electricityRow = electricityTable.insertRow();
+                    electricityRow.innerHTML = "<td>" + (electricityEntry.energySource || '') + "</td><td>" + (electricityEntry.electricityUsage || '') + "</td><td>" + formatDateString(entry.entryDate) + "</td><td>" + (entry.carbonEmissions || '') + "</td>"; // Include carbon emissions
+                }
             });
         }
 
-        // Call populateDataHistory function when the page loads
-        window.onload = function() {
-            populateDataHistory();
-        };
+
+        // Function to format date string
+        function formatDateString(dateString) {
+            var date = new Date(dateString);
+            return date.toLocaleDateString('en-CA');
+        }
+    
     </script>
 </asp:Content>
