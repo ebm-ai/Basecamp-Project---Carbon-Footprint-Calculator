@@ -50,10 +50,10 @@
 
         <section class="row">
             <div class="col-md-6">
-                <p>
+                <p style="text-align: justify;">
                     Eco Impact Africa is a dedicated organization established with the mission of fostering a culture of sustainability and providing comprehensive environmental solutions. We envision a future where individuals and businesses thrive in harmony with the environment, making a positive impact for generations to come.
                 </p>
-                <p>
+                <p style="text-align: justify;">
                     Our team is comprised of experienced professionals passionate about sustainability. We offer a wide range of services to empower our clients to achieve their environmental goals, exceeding their expectations with tailored solutions and a commitment to excellence.
                 </p>
             </div>
@@ -66,13 +66,14 @@
             <div class="col-md-12">
                 <h3>Our Values</h3>
                 <ul class="list-unstyled">
-                    <li>Integrity: We conduct our business with honesty and transparency.</li>
-                    <li>Collaboration: We work together with clients and partners to achieve shared goals.</li>
-                    <li>Innovation: We embrace new technologies and approaches to create sustainable solutions.</li>
-                    <li>Impact: We strive to make a positive difference in the environment and society.</li>
+                    <li style="text-align: justify;"><strong>Integrity:</strong> We conduct our business with honesty and transparency.</li>
+                    <li style="text-align: justify;"><strong>Collaboration:</strong> We work together with clients and partners to achieve shared goals.</li>
+                    <li style="text-align: justify;"><strong>Innovation:</strong> We embrace new technologies and approaches to create sustainable solutions.</li>
+                    <li style="text-align: justify;"><strong>Impact:</strong> We strive to make a positive difference in the environment and society.</li>
                 </ul>
             </div>
         </section>
+
 
     </main>
 </asp:Content>
