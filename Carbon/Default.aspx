@@ -31,6 +31,7 @@
                 <a href="Default.aspx" class="nav-link px-3">Home</a>
                 <a href="About.aspx" class="nav-link px-3">About</a>
                 <a href="Contact.aspx" class="nav-link px-3">Contact</a>
+                <a href="DataHistory.aspx" class="nav-link px-3">Data History</a>
             </nav>
             <div class="d-flex align-items-center">
                 <%-- Display welcome message if user is authenticated --%>
