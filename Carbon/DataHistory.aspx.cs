@@ -10,6 +10,10 @@ public partial class DataHistory : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!User.Identity.IsAuthenticated)
+        {
+            Response.Redirect("~/Account/Login.aspx");
+        }
         if (User.Identity.IsAuthenticated)
         {
             // Get the username of the logged-in user
