@@ -2,13 +2,13 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div class="mt-4"> <!-- Add margin top to move the content down -->
-        <h2 class="text-center"><%: Title %>.</h2>
+        <h2 class="text-center"><%: Title %></h2>
 
         <div class="row justify-content-center mt-4"> <!-- Add margin top to move the content down -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create a new account.</h4>
+                        <h4 class="text-center">Create a new account</h4>
                         <hr />
                         <asp:ValidationSummary runat="server" CssClass="text-danger" />
                         <div class="mb-3 row">

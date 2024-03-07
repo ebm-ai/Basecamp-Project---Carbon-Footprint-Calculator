@@ -73,19 +73,15 @@
                 <h3>Contact Information</h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, CA 12345
+                        <i class="fas fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia
                     </li>
                     <li class="list-group-item">
-                        <i class="fas fa-phone-alt me-2"></i> (555) 555-5555
+                        <i class="fas fa-phone-alt me-2"></i> (251) 900-000000
                     </li>
                     <li class="list-group-item">
                         <i class="fas fa-envelope me-2"></i> info@ecoimpactafrica.com
                     </li>
                 </ul>
-                <p>**Social Media:**</p>
-                <a href="#" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-dark"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </section>
 

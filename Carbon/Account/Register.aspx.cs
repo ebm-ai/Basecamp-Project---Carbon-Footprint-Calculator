@@ -19,7 +19,7 @@ public partial class Account_Register : Page
         else
         {
             // Display error message using JavaScript alert
-            ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage", $"alert('{result.Errors.FirstOrDefault()}');", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage", "alert('{result.Errors.FirstOrDefault()}');", true);
         }
     }
 }
