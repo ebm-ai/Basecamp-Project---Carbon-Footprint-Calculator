@@ -82,7 +82,7 @@
                         </div>
                         <div class="mb-3 row">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-primary" />
+                                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-green" />
                             </div>
                         </div>
                     </div>
