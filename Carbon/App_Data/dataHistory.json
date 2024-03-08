@@ -1,1 +1,16 @@
-[{"entryDate":"2024-03-08T02:24:59.731185+03:00","transport":{"vehicleType":"car","distanceTravelled":234.0,"fuelType":"gasoline","fuelEfficiency":234.0},"electricity":{"energySource":"grid","electricityUsage":100000.0},"carbonFootprint":{"transportEmissions":561.6,"electricityEmissions":50000.0}}]
+[
+  {
+    "entryDate": "2024-03-08T02:24:59.731185+03:00",
+    "transport": {
+      "vehicleType": "car",
+      "distanceTravelled": 234.0,
+      "fuelType": "gasoline",
+      "fuelEfficiency": 234.0
+    },
+    "electricity": { "energySource": "grid", "electricityUsage": 100000.0 },
+    "carbonFootprint": {
+      "transportEmissions": 561.6,
+      "electricityEmissions": 50000.0
+    }
+  }
+]
