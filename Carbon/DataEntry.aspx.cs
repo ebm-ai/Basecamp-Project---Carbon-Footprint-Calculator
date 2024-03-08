@@ -46,24 +46,17 @@ public partial class DataEntry : Page
         }
 
         // Calculate carbon emissions
-        double carbonEmissions = 0.0;
-        if (energySource == "grid")
-        {
-            carbonEmissions = CalculateElectricityEmissions(electricityUsage);
-        }
-        else if (energySource == "oil")
-        {
-            carbonEmissions = CalculateOilEmissions(fuelType, distanceTravelled);
-        }
+        double transportEmissions = CalculateOilEmissions(fuelType, distanceTravelled);
+        double electricityEmissions = CalculateElectricityEmissions(electricityUsage);
 
         // Store data in JSON format
-        StoreFormDataInJson(vehicleType, distanceTravelled, fuelType, fuelEfficiency, energySource, electricityUsage, carbonEmissions);
+        StoreFormDataInJson(vehicleType, distanceTravelled, fuelType, fuelEfficiency, energySource, electricityUsage, CalculateOilEmissions(fuelType, distanceTravelled), CalculateElectricityEmissions(electricityUsage));
 
         // Redirect to DataHistory.aspx
         Response.Redirect("DataHistory.aspx");
     }
 
-    private void StoreFormDataInJson(string vehicleType, double distanceTravelled, string fuelType, double fuelEfficiency, string energySource, double electricityUsage, double carbonEmissions)
+    private void StoreFormDataInJson(string vehicleType, double distanceTravelled, string fuelType, double fuelEfficiency, string energySource, double electricityUsage, double transportEmissions, double electricityEmissions)
     {
         // Check if the data file exists
         string dataFilePath = Server.MapPath("~/App_Data/dataHistory.json");
@@ -74,7 +67,15 @@ public partial class DataEntry : Page
         {
             // Read existing data from file
             string existingData = File.ReadAllText(dataFilePath);
+
+            // Deserialize existing data into formDataList
             formDataList = JsonConvert.DeserializeObject<List<object>>(existingData);
+
+            // Ensure formDataList is not null
+            if (formDataList == null)
+            {
+                formDataList = new List<object>();
+            }
         }
         else
         {
@@ -97,14 +98,14 @@ public partial class DataEntry : Page
                 energySource,
                 electricityUsage
             },
-            carbonEmissions
+            carbonFootprint = new
+            {
+                transportEmissions,
+                electricityEmissions
+            }
         };
 
         // Add new data to the list
-        if (formDataList == null) // Ensure formDataList is not null before adding data
-        {
-            formDataList = new List<object>();
-        }
         formDataList.Add(formData);
 
         // Convert the list to JSON
@@ -113,6 +114,7 @@ public partial class DataEntry : Page
         // Write JSON to file
         File.WriteAllText(dataFilePath, formDataJson);
     }
+
     private double CalculateElectricityEmissions(double electricityUsage)
     {
         // Emissions factor for the electricity grid (kg CO2e/kWh)

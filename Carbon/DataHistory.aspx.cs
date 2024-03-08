@@ -26,6 +26,8 @@ public partial class DataHistory : Page
             // Deserialize JSON data
             dataHistory = JsonConvert.DeserializeObject<List<dynamic>>(jsonData);
 
+            CalculateAndDisplayTotalCarbonEmissions();
+
             // Set the value of the hidden field
             dataHistoryHiddenField.Value = JsonConvert.SerializeObject(dataHistory);
 
@@ -57,6 +59,7 @@ public partial class DataHistory : Page
             {
                 dynamic transportEntry = entry.transport;
                 dynamic electricityEntry = entry.electricity;
+                dynamic carbonFootprint = entry.carbonFootprint;
 
                 if (transportEntry != null)
                 {
@@ -85,5 +88,31 @@ public partial class DataHistory : Page
                 }
             }
         }
+    }
+    private void CalculateAndDisplayTotalCarbonEmissions()
+    {
+        double totalTransportCarbonEmissions = 0.0;
+        double totalElectricityCarbonEmissions = 0.0;
+
+        foreach (var entry in dataHistory)
+        {
+            dynamic carbonFootprint = entry.carbonFootprint;
+            if (carbonFootprint != null)
+            {
+                totalTransportCarbonEmissions += (double)carbonFootprint.transportEmissions;
+                totalElectricityCarbonEmissions += (double)carbonFootprint.electricityEmissions;
+            }
+        }
+
+        // Display total carbon emissions for transport
+        lblTotalTransportCarbonEmissions.Text = "Total Transport Carbon Emissions: " + totalTransportCarbonEmissions.ToString("0.00") + " kg CO2";
+
+        // Display total carbon emissions for electricity
+        lblTotalElectricityCarbonEmissions.Text = "Total Electricity Carbon Emissions: " + totalElectricityCarbonEmissions.ToString("0.00") + " kg CO2";
+
+        // Optionally, display overall total carbon emissions
+        double overallTotalCarbonEmissions = totalTransportCarbonEmissions + totalElectricityCarbonEmissions;
+        lblOverallTotalCarbonEmissions.Text = "Overall Total Carbon Emissions: " + overallTotalCarbonEmissions.ToString("0.00") + " kg CO2";
+
     }
 }
