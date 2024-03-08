@@ -33,6 +33,7 @@ Eco Impact Africa (EIA) is a startup organization dedicated to promoting environ
 3. Build and run the project.
 4. Access the application through your web browser.
 # Screenshots
+
+![](./Screenshots/homepage.png)
 ![](./Screenshots/welcome.png)
 ![](./Screenshots/datahistory.png)
-![](./Screenshots/homepage.png)
