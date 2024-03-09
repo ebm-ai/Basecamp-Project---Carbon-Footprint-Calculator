@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,13 +32,15 @@ public partial class DataEntry : Page
 
     protected void SubmitButton_Click(object sender, EventArgs e)
     {
-        // Get form data
+        // Get form data for Transport Emissions
         string vehicleType = vehicleTypeDropDown.SelectedValue;
         double distanceTravelled = double.Parse(distanceTravelledTextBox.Text);
         string fuelType = fuelTypeDropDown.SelectedValue;
         double fuelEfficiency = double.Parse(fuelEfficiencyTextBox.Text);
+
+        // Get form data for Electricity Consumption
         string energySource = energySourceDropDown.SelectedValue;
-        double electricityUsage = 100000; // Placeholder value for electricity usage
+        double electricityUsage = 0;
 
         // Parse electricity usage if provided
         if (!string.IsNullOrEmpty(electricityUsageTextBox.Text))
@@ -46,11 +49,11 @@ public partial class DataEntry : Page
         }
 
         // Calculate carbon emissions
-        double transportEmissions = CalculateOilEmissions(fuelType, distanceTravelled);
-        double electricityEmissions = CalculateElectricityEmissions(electricityUsage);
+        double transportEmissions = CalculateOilEmissions(vehicleType,fuelType, distanceTravelled, fuelEfficiency);
+        double electricityEmissions = CalculateElectricityEmissions(energySource, electricityUsage);
 
         // Store data in JSON format
-        StoreFormDataInJson(vehicleType, distanceTravelled, fuelType, fuelEfficiency, energySource, electricityUsage, CalculateOilEmissions(fuelType, distanceTravelled), CalculateElectricityEmissions(electricityUsage));
+        StoreFormDataInJson(vehicleType, distanceTravelled, fuelType, fuelEfficiency, energySource, electricityUsage, transportEmissions, electricityEmissions);
 
         // Redirect to DataHistory.aspx
         Response.Redirect("DataHistory.aspx");
@@ -115,31 +118,79 @@ public partial class DataEntry : Page
         File.WriteAllText(dataFilePath, formDataJson);
     }
 
-    private double CalculateElectricityEmissions(double electricityUsage)
-    {
-        // Emissions factor for the electricity grid (kg CO2e/kWh)
-        double emissionsFactor = 0.5;
-
-        // Calculate electricity emissions
-        return electricityUsage * emissionsFactor;
-    }
-
-    private double CalculateOilEmissions(string fuelType, double distanceTravelled)
+    private double CalculateElectricityEmissions(string energySource,double electricityUsage)
     {
         // Placeholder logic to get emissions factor for different fuel types (kg CO2 per liter)
         double emissionsFactor = 0.0;
 
+        if (energySource == "grid")
+        {
+            // Assuming emissions factor for gasoline is approximately 2.4 kg CO2 per liter
+            emissionsFactor = 0.3;
+        }
+        else if (energySource == "solar")
+        {
+            // Assuming emissions factor for diesel is approximately 2.65 kg CO2 per liter
+            emissionsFactor = 0.1;
+        }
+        else if (energySource == "wind")
+        {
+            // Assuming emissions factor for solar is approximately 2.65 kg CO2 per liter
+            emissionsFactor = 0.2;
+        }
+        else
+        {
+            emissionsFactor = 0.25;
+        }
+    
+        // Calculate electricity emissions
+        return electricityUsage * emissionsFactor;
+    }
+
+    private double CalculateOilEmissions(string vehicleType,string fuelType, double distanceTravelled,double fuelEfficiency)
+    {
+
+        // Placeholder logic to get emissions factor for different fuel types (kg CO2 per liter)
+        double emissionsFactor = 0.0;
+        double carbonFactor = 0.0;
+        double distanceFactor = 0.0;
+        if (vehicleType == "car")
+        {
+            carbonFactor = 0.5;
+        }
+        else if(vehicleType == "truck")
+        {
+            carbonFactor = 0.7;
+        }
+        else if (vehicleType == "bus")
+        {
+            carbonFactor = 0.6;
+        }
         if (fuelType == "gasoline")
         {
             // Assuming emissions factor for gasoline is approximately 2.4 kg CO2 per liter
+            distanceFactor = distanceTravelled * 2.35;
             emissionsFactor = 2.4;
         }
         else if (fuelType == "diesel")
         {
-            // Assuming emissions factor for diesel is approximately 2.65 kg CO2 per liter
-            emissionsFactor = 2.65;
+            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
+            distanceFactor = distanceTravelled * 2.35; 
+            emissionsFactor = 2.7;
+        }
+        else if (fuelType == "petrol")
+        {
+            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
+            distanceFactor = distanceTravelled * 2.35;
+            emissionsFactor = 1.7;
+        }
+        else if (fuelType == "electric")
+        {
+            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
+            distanceFactor = distanceTravelled;
+            emissionsFactor = 0.0;
         }
         // Calculate emissions
-        return emissionsFactor * distanceTravelled; // Assuming distance is in km
+        return emissionsFactor * distanceFactor * carbonFactor* fuelEfficiency; // Assuming distance is in km
     }
 }

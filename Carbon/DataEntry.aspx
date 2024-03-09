@@ -48,51 +48,47 @@
         <section class="row">
             <div class="col-md-6">
                 <h3>Transport Emissions</h3>
-                <form id="transportForm">
-                    <div class="mb-3">
-                        <label for="vehicleTypeDropDown" class="form-label">Vehicle Type</label>
-                        <asp:DropDownList ID="vehicleTypeDropDown" runat="server" CssClass="form-select">
-                            <asp:ListItem Value="car">Car</asp:ListItem>
-                            <asp:ListItem Value="truck">Truck</asp:ListItem>
-                            <asp:ListItem Value="bus">Bus</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="mb-3">
-                        <label for="distanceTravelledTextBox" class="form-label">Distance Travelled (km)</label>
-                        <asp:TextBox ID="distanceTravelledTextBox" runat="server" CssClass="form-control" placeholder="Enter distance in km"></asp:TextBox>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fuelTypeDropDown" class="form-label">Fuel Type</label>
-                        <asp:DropDownList ID="fuelTypeDropDown" runat="server" CssClass="form-select">
-                            <asp:ListItem Value="gasoline">Gasoline</asp:ListItem>
-                            <asp:ListItem Value="diesel">Diesel</asp:ListItem>
-                            <asp:ListItem Value="petrol">Petrol</asp:ListItem>
-                            <asp:ListItem Value="electric">Electric</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fuelEfficiencyTextBox" class="form-label">Fuel Efficiency (gallons per trip)</label>
-                        <asp:TextBox ID="fuelEfficiencyTextBox" runat="server" CssClass="form-control" placeholder="Enter gallons per trip"></asp:TextBox>
-                    </div>
-                </form>
+                <div class="mb-3">
+                    <label for="vehicleTypeDropDown" class="form-label">Vehicle Type</label>
+                    <asp:DropDownList ID="vehicleTypeDropDown" runat="server" CssClass="form-select">
+                        <asp:ListItem Value="car">Car</asp:ListItem>
+                        <asp:ListItem Value="truck">Truck</asp:ListItem>
+                        <asp:ListItem Value="bus">Bus</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="mb-3">
+                    <label for="distanceTravelledTextBox" class="form-label">Distance Travelled (km)</label>
+                    <asp:TextBox ID="distanceTravelledTextBox" runat="server" CssClass="form-control" placeholder="Enter distance in km"></asp:TextBox>
+                </div>
+                <div class="mb-3">
+                    <label for="fuelTypeDropDown" class="form-label">Fuel Type</label>
+                    <asp:DropDownList ID="fuelTypeDropDown" runat="server" CssClass="form-select">
+                        <asp:ListItem Value="gasoline">Gasoline</asp:ListItem>
+                        <asp:ListItem Value="diesel">Diesel</asp:ListItem>
+                        <asp:ListItem Value="petrol">Petrol</asp:ListItem>
+                        <asp:ListItem Value="electric">Electric</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="mb-3">
+                    <label for="fuelEfficiencyTextBox" class="form-label">Fuel Efficiency (gallons per trip)</label>
+                    <asp:TextBox ID="fuelEfficiencyTextBox" runat="server" CssClass="form-control" placeholder="Enter gallons per trip"></asp:TextBox>
+                </div>
             </div>
             <div class="col-md-6">
                 <h3>Electricity Consumption</h3>
-                <form id="electricityForm">
-                    <div class="mb-3">
-                        <label for="energySourceDropDown" class="form-label">Energy Source</label>
-                        <asp:DropDownList ID="energySourceDropDown" runat="server" CssClass="form-select">
-                            <asp:ListItem Value="grid">Grid</asp:ListItem>
-                            <asp:ListItem Value="solar">Solar</asp:ListItem>
-                            <asp:ListItem Value="wind">Wind</asp:ListItem>
-                            <asp:ListItem Value="others">Others</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="mb-3">
-                        <label for="electricityUsageTextBox" class="form-label">Electricity Usage (Kilowatt-Hours)</label>
-                        <asp:TextBox ID="electricityUsageTextBox" runat="server" CssClass="form-control" placeholder="Enter electricity usage in kWh"></asp:TextBox>
-                    </div>
-                </form>
+                <div class="mb-3">
+                    <label for="energySourceDropDown" class="form-label">Energy Source</label>
+                    <asp:DropDownList ID="energySourceDropDown" runat="server" CssClass="form-select">
+                        <asp:ListItem Value="grid">Grid</asp:ListItem>
+                        <asp:ListItem Value="solar">Solar</asp:ListItem>
+                        <asp:ListItem Value="wind">Wind</asp:ListItem>
+                        <asp:ListItem Value="others">Others</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="mb-3">
+                    <label for="electricityUsageTextBox" class="form-label">Electricity Usage (Kilowatt-Hours)</label>
+                    <asp:TextBox ID="electricityUsageTextBox" runat="server" CssClass="form-control" placeholder="Enter electricity usage in kWh"></asp:TextBox>
+                </div>
             </div>
         </section>
         <asp:Button ID="submitButton" runat="server" Text="Submit" CssClass="btn btn-green" OnClick="SubmitButton_Click" />
