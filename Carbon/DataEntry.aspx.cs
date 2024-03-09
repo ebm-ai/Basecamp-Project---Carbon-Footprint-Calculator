@@ -146,14 +146,12 @@ public partial class DataEntry : Page
         // Calculate electricity emissions
         return electricityUsage * emissionsFactor;
     }
-
     private double CalculateTransportEmissions(string vehicleType, string fuelType, double distanceTravelled, double fuelEfficiency)
     {
-
-        // Placeholder logic to get emissions factor for different fuel types (kg CO2 per liter)
-        double emissionsFactor = 0.0;
         double carbonFactor = 0.0;
-        double distanceFactor = 0.0;
+        double distanceFactor = distanceTravelled * 2.35;
+
+        // Set the carbon factor based on the vehicle type
         if (vehicleType == "car")
         {
             carbonFactor = 0.5;
@@ -166,31 +164,37 @@ public partial class DataEntry : Page
         {
             carbonFactor = 0.6;
         }
-        if (fuelType == "gasoline")
+
+        // Calculate emissions for non-electric vehicles
+        if (fuelType != "electric")
         {
-            // Assuming emissions factor for gasoline is approximately 2.4 kg CO2 per liter
-            distanceFactor = distanceTravelled * 2.35;
-            emissionsFactor = 2.4;
+            double emissionsFactor = GetEmissionsFactor(fuelType); // Get emissions factor based on fuel type
+
+            // Calculate emissions
+            return emissionsFactor * distanceFactor * carbonFactor * fuelEfficiency; // Assuming distance is in km
         }
-        else if (fuelType == "diesel")
-        {
-            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
-            distanceFactor = distanceTravelled * 2.35;
-            emissionsFactor = 2.7;
-        }
-        else if (fuelType == "petrol")
-        {
-            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
-            distanceFactor = distanceTravelled * 2.35;
-            emissionsFactor = 1.7;
-        }
-        else if (fuelType == "electric")
-        {
-            // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
-            distanceFactor = distanceTravelled;
-            emissionsFactor = 0.0;
-        }
-        // Calculate emissions
-        return emissionsFactor * distanceFactor * carbonFactor * fuelEfficiency; // Assuming distance is in km
+
+        // For electric vehicles, carbon emissions are zero
+        return 0.0;
     }
+
+    // Helper method to get emissions factor based on fuel type
+    private double GetEmissionsFactor(string fuelType)
+    {
+        switch (fuelType)
+        {
+            case "gasoline":
+                // Assuming emissions factor for gasoline is approximately 2.4 kg CO2 per liter
+                return 2.4;
+            case "diesel":
+                // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
+                return 2.7;
+            case "petrol":
+                // Assuming emissions factor for petrol is approximately 1.7 kg CO2 per liter
+                return 1.7;
+            default:
+                return 0.0; // Default emissions factor for unknown fuel types
+        }
+    }
+
 }
