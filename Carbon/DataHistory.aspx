@@ -2,7 +2,30 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        /* Add your CSS styles here */
+       td {
+           text-transform: capitalize;
+       }
+       .btn-green {
+           color: #fff;
+           background-color: #006400; /* Darker shade of green */
+           border-color: #006400; /* Darker shade of green */
+           transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+       }
+
+       .btn-green:hover {
+           background-color: #004d00; /* Darker shade of green on hover */
+           border-color: #004d00; /* Darker shade of green on hover */
+       }
+       .nav-link {
+           color: #fff;
+           text-decoration: none;
+           transition: color 0.3s ease-in-out;
+           font-weight: bold;
+       }
+
+       .nav-link:hover {
+           color: #d3d3d3; /* Lighter shade of gray on hover */
+       }
     </style>
     <header class="py-5 mb-4" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
         <div class="container d-flex justify-content-between align-items-center">
