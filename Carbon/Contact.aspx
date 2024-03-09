@@ -40,9 +40,6 @@
                     <a href="Account/Login.aspx" class="btn btn-sm btn-outline-light me-2">Login</a>
                     <a href="Account/Register.aspx" class="btn btn-sm btn-green">Register</a>
                 <% } %>
-                <% else {%>
-     <a href="Account/Logout.aspx" class="btn btn-sm btn-green">Signout</a>
- <%}%>
             </div>
         </div>
     </header>
