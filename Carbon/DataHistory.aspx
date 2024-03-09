@@ -39,6 +39,7 @@
                         <th>Fuel Type</th>
                         <th>Fuel Efficiency (Gallons/Km/Mile)</th>
                         <th>Entry Date</th>
+                        <th>Carbon Emmision</th>
                     </tr>
                 </thead>
                 <!-- Table body -->
@@ -58,6 +59,7 @@
                         <th>Energy Source</th>
                         <th>Electricity Usage (Kilowatt-Hours)</th>
                         <th>Entry Date</th>
+                        <th>Carbon Emmision</th>
                     </tr>
                 </thead>
                 <!-- Table body -->
@@ -101,12 +103,12 @@
 
                 if (transportEntry) {
                     var transportRow = transportTable.insertRow();
-                    transportRow.innerHTML = "<td>" + (transportEntry.vehicleType || '') + "</td><td>" + (transportEntry.distanceTravelled || '') + "</td><td>" + (transportEntry.fuelType || '') + "</td><td>" + (transportEntry.fuelEfficiency || '') + "</td><td>" + formatDate(entry.entryDate || '') + "</td>";
+                    transportRow.innerHTML = "<td>" + (transportEntry.vehicleType || '') + "</td><td>" + (transportEntry.distanceTravelled || '') + "</td><td>" + (transportEntry.fuelType || '') + "</td><td>" + (transportEntry.fuelEfficiency || '') + "</td><td>" + formatDate(entry.entryDate || '') + "</td><td>" + (entry.carbonFootprint.transportEmissions || '') + "</td>";
                 }
 
                 if (electricityEntry) {
                     var electricityRow = electricityTable.insertRow();
-                    electricityRow.innerHTML = "<td>" + (electricityEntry.energySource || '') + "</td><td>" + (electricityEntry.electricityUsage || '') + "</td><td>" + formatDate(entry.entryDate || '') + "</td>";
+                    electricityRow.innerHTML = "<td>" + (electricityEntry.energySource || '') + "</td><td>" + (electricityEntry.electricityUsage || '') + "</td><td>" + formatDate(entry.entryDate || '') + "</td><td>" + (entry.carbonFootprint.electricityEmissions || '') + "</td>";
                 }
             });
         }
