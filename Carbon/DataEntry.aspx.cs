@@ -49,7 +49,7 @@ public partial class DataEntry : Page
         }
 
         // Calculate carbon emissions
-        double transportEmissions = CalculateOilEmissions(vehicleType,fuelType, distanceTravelled, fuelEfficiency);
+        double transportEmissions = CalculateTransportEmissions(vehicleType, fuelType, distanceTravelled, fuelEfficiency);
         double electricityEmissions = CalculateElectricityEmissions(energySource, electricityUsage);
 
         // Store data in JSON format
@@ -118,7 +118,7 @@ public partial class DataEntry : Page
         File.WriteAllText(dataFilePath, formDataJson);
     }
 
-    private double CalculateElectricityEmissions(string energySource,double electricityUsage)
+    private double CalculateElectricityEmissions(string energySource, double electricityUsage)
     {
         // Placeholder logic to get emissions factor for different fuel types (kg CO2 per liter)
         double emissionsFactor = 0.0;
@@ -142,12 +142,12 @@ public partial class DataEntry : Page
         {
             emissionsFactor = 0.25;
         }
-    
+
         // Calculate electricity emissions
         return electricityUsage * emissionsFactor;
     }
 
-    private double CalculateOilEmissions(string vehicleType,string fuelType, double distanceTravelled,double fuelEfficiency)
+    private double CalculateTransportEmissions(string vehicleType, string fuelType, double distanceTravelled, double fuelEfficiency)
     {
 
         // Placeholder logic to get emissions factor for different fuel types (kg CO2 per liter)
@@ -158,7 +158,7 @@ public partial class DataEntry : Page
         {
             carbonFactor = 0.5;
         }
-        else if(vehicleType == "truck")
+        else if (vehicleType == "truck")
         {
             carbonFactor = 0.7;
         }
@@ -175,7 +175,7 @@ public partial class DataEntry : Page
         else if (fuelType == "diesel")
         {
             // Assuming emissions factor for diesel is approximately 2.7 kg CO2 per liter
-            distanceFactor = distanceTravelled * 2.35; 
+            distanceFactor = distanceTravelled * 2.35;
             emissionsFactor = 2.7;
         }
         else if (fuelType == "petrol")
@@ -191,6 +191,6 @@ public partial class DataEntry : Page
             emissionsFactor = 0.0;
         }
         // Calculate emissions
-        return emissionsFactor * distanceFactor * carbonFactor* fuelEfficiency; // Assuming distance is in km
+        return emissionsFactor * distanceFactor * carbonFactor * fuelEfficiency; // Assuming distance is in km
     }
 }
