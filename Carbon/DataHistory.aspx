@@ -43,6 +43,9 @@
                     <a href="Account/Login.aspx" class="btn btn-sm btn-outline-light me-2">Login</a>
                     <a href="Account/Register.aspx" class="btn btn-sm btn-green">Register</a>
                 <% } %>
+                <% if (User.Identity.IsAuthenticated) { %>
+                    <a href="Account/Logout.aspx" class="btn btn-sm btn-outline-light me-2">Logout</a>
+                <% } %>
             </div>
         </div>
     </header>
